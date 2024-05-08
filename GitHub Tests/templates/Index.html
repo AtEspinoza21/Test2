@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de propiedades del vapor</title>
+</head>
+<body>
+    <h1>Calculadora de propiedades del vapor</h1>
+    <form method="POST">
+        <label for="unidad_temp">Unidad de temperatura:</label><br>
+        <input type="text" id="unidad_temp" name="unidad_temp"><br>
+        <label for="temperatura">Temperatura:</label><br>
+        <input type="text" id="temperatura" name="temperatura"><br>
+        <label for="unidad_presion">Unidad de presión:</label><br>
+        <input type="text" id="unidad_presion" name="unidad_presion"><br>
+        <label for="presion">Presión:</label><br>
+        <input type="text" id="presion" name="presion"><br>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if propiedades %}
+    <h2>Resultados</h2>
+    <p>Temperatura: {{ propiedades['temp'] }} {{ unidad_temp }}</p>
+    <p>Volumen específico: {{ propiedades['v'] }} m^3/kg</p>
+    <p>Entalpía: {{ propiedades['h'] }} kJ/kg</p>
+    <p>Entropía: {{ propiedades['s'] }} kJ/kg·K</p>
+    <p>Viscosidad: {{ propiedades['viscosidad'] }} mPa·s</p>
+    {% endif %}
+</body>
+</html>
